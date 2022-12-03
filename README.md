@@ -4,6 +4,8 @@
 
 - Rust: [2]
 
+- C++: [3]
+
 - JavaScript (Node)
 
 - TypeScript (Deno)
@@ -13,8 +15,6 @@
 - Kotlin
 
 - C#
-
-- C++
 
 - Go
 
