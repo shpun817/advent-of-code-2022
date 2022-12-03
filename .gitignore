@@ -1,2 +1,5 @@
 # C++ output files
 *.out
+
+# Generated artifact when moving files across file systems
+*Zone.Identifier
