@@ -47,15 +47,15 @@ class BadgeFinder {
     // Return true if a badge is found
     bool insert_rucksack(char* badge, const std::string& rucksack) {
         if (elf_count == 2) {
+            *badge = '\0';
             // The first common item is the badge
             for (const char& c: rucksack) {
                 if (item_set.find(c) != item_set.end()) {
                     *badge = c;
-                    reset();
-                    return true;
+                    break;
                 }
             }
-            *badge = '\0';
+            reset();
             return true;
         }
 
