@@ -6,6 +6,8 @@
 
 - C++: [3]
 
+- Go: [4]
+
 - JavaScript (Node)
 
 - TypeScript (Deno)
@@ -15,7 +17,5 @@
 - Kotlin
 
 - C#
-
-- Go
 
 - Nim
