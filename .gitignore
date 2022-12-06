@@ -3,3 +3,6 @@
 
 # Generated artifact when moving files across file systems
 *Zone.Identifier
+
+# Java/Kotlin output files
+*.jar
