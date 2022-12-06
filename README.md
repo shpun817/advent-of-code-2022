@@ -12,7 +12,7 @@
 
 - *Kotlin: [5]
 
-- JavaScript (Node)
+- JavaScript (Node): [6]
 
 - TypeScript (Deno)
 
