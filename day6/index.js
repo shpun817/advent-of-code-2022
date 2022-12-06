@@ -2,7 +2,7 @@ const fs = require("fs");
 
 const CircularBuffer = require("mnemonist/circular-buffer");
 
-function findPosOfFirstStartOfPacketMarker(datastream, sequenceLength = 4) {
+function findPosOfUniqueConsecutiveSeq(datastream, sequenceLength = 4) {
     const buffer = new CircularBuffer(Array, sequenceLength);
     let i = 0;
     for (i = 0; i < datastream.length; ++i) {
@@ -38,12 +38,26 @@ function main() {
             if (ds === "") {
                 return;
             }
-            const pos = findPosOfFirstStartOfPacketMarker(ds);
-            if (pos === null) {
+            const posP1 = findPosOfUniqueConsecutiveSeq(ds);
+            const posP2 = findPosOfUniqueConsecutiveSeq(ds, 14);
+            if (posP1 === null) {
                 console.error("No packet found");
                 return;
             }
-            console.log("Packet found after", pos, "characters are processed.");
+            if (posP2 === null) {
+                console.error("No message found");
+                return;
+            }
+            console.log(
+                "Packet found after",
+                posP1,
+                "characters are processed.",
+            );
+            console.log(
+                "Message found after",
+                posP2,
+                "characters are processed.",
+            );
         });
     });
 }
