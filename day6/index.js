@@ -1,16 +1,37 @@
 const fs = require("fs");
 
-const CircularBuffer = require("mnemonist/circular-buffer");
+class CircularBuffer {
+    constructor(capacity) {
+        this.capacity = capacity;
+        this.buffer = new Array();
+    }
 
-function findPosOfUniqueConsecutiveSeq(datastream, sequenceLength = 4) {
-    const buffer = new CircularBuffer(Array, sequenceLength);
+    size() {
+        return this.buffer.length;
+    }
+
+    push(elem) {
+        if (this.buffer.length === this.capacity) {
+            this.buffer.shift();
+        }
+        this.buffer.push(elem);
+    }
+
+    containsUniqueElements() {
+        return new Set(this.buffer).size === this.size();
+    }
+}
+
+// Return null if not found
+function findPosOfUniqueConsecutiveSeq(datastream, sequenceLength) {
+    const buffer = new CircularBuffer(sequenceLength);
     let i = 0;
     for (i = 0; i < datastream.length; ++i) {
         buffer.push(datastream[i]);
-        if (buffer.size < sequenceLength) {
+        if (buffer.size() < sequenceLength) {
             continue;
         }
-        if (containsUniqueElements(buffer)) {
+        if (buffer.containsUniqueElements()) {
             break;
         }
     }
@@ -18,11 +39,6 @@ function findPosOfUniqueConsecutiveSeq(datastream, sequenceLength = 4) {
         return null;
     }
     return i + 1;
-}
-
-function containsUniqueElements(buffer) {
-    const uniqueElements = new Set(buffer);
-    return uniqueElements.size === buffer.size;
 }
 
 function main() {
@@ -38,14 +54,9 @@ function main() {
             if (ds === "") {
                 return;
             }
-            const posP1 = findPosOfUniqueConsecutiveSeq(ds);
-            const posP2 = findPosOfUniqueConsecutiveSeq(ds, 14);
+            const posP1 = findPosOfUniqueConsecutiveSeq(ds, 4);
             if (posP1 === null) {
                 console.error("No packet found");
-                return;
-            }
-            if (posP2 === null) {
-                console.error("No message found");
                 return;
             }
             console.log(
@@ -53,6 +64,12 @@ function main() {
                 posP1,
                 "characters are processed.",
             );
+
+            const posP2 = findPosOfUniqueConsecutiveSeq(ds, 14);
+            if (posP2 === null) {
+                console.error("No message found");
+                return;
+            }
             console.log(
                 "Message found after",
                 posP2,
