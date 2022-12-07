@@ -21,3 +21,9 @@
 - C#
 
 - Nim
+
+- Zig
+
+- Ruby
+
+- Groovy
