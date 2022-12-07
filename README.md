@@ -27,3 +27,7 @@
 - Ruby
 
 - Groovy
+
+- Scala
+
+- Haskell
