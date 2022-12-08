@@ -6,6 +6,7 @@
 
 # Java/Kotlin output files
 *.jar
+*.class
 
 # Node modules
 node_modules

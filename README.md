@@ -14,9 +14,9 @@
 
 - JavaScript (Node): [6]
 
-- TypeScript (Deno)
+- Java: [7]
 
-- Java
+- TypeScript (Deno)
 
 - C#
 
