@@ -41,8 +41,35 @@ class Grid {
         return acc;
     }
 
+    public int FindHighestScenicScore() {
+        int max = 0;
+        for (int i = 0; i < this.Height; ++i) {
+            for (int j = 0; j < this.Width; ++j) {
+                int scenicScore = this.getPointScenicScore(i, j);
+                if (scenicScore > max) {
+                    max = scenicScore;
+                }
+            }
+        }
+        return max;
+    }
+
     int getPointAmplitude(int x, int y) {
         return this.amplitudes[y, x];
+    }
+
+    int getPointScenicScore(int x, int y) {
+        return
+            this.getNumPointsSeenUp(x, y) *
+            this.getNumPointsSeenLeft(x, y) *
+            this.getNumPointsSeenDown(x, y) *
+            this.getNumPointsSeenRight(x, y);
+    }
+
+    bool isPointValid(int x, int y) {
+        return
+            0 <= x && x < this.Height &&
+            0 <= y && y < this.Width;
     }
 
     bool isPointVisible(int x, int y) {
@@ -92,6 +119,54 @@ class Grid {
         }
         return true;
     }
+
+    int getNumPointsSeenUp(int x, int y) {
+        int acc = 0;
+        int pointAmp = this.getPointAmplitude(x, y);
+        for (int i = y-1; this.isPointValid(x, i); --i) {
+            ++acc;
+            if (this.getPointAmplitude(x, i) >= pointAmp) {
+                break;
+            }
+        }
+        return acc;
+    }
+
+    int getNumPointsSeenDown(int x, int y) {
+        int acc = 0;
+        int pointAmp = this.getPointAmplitude(x, y);
+        for (int i = y+1; this.isPointValid(x, i); ++i) {
+            ++acc;
+            if (this.getPointAmplitude(x, i) >= pointAmp) {
+                break;
+            }
+        }
+        return acc;
+    }
+
+    int getNumPointsSeenRight(int x, int y) {
+        int acc = 0;
+        int pointAmp = this.getPointAmplitude(x, y);
+        for (int j = x+1; this.isPointValid(j, y); ++j) {
+            ++acc;
+            if (this.getPointAmplitude(j, y) >= pointAmp) {
+                break;
+            }
+        }
+        return acc;
+    }
+
+    int getNumPointsSeenLeft(int x, int y) {
+        int acc = 0;
+        int pointAmp = this.getPointAmplitude(x, y);
+        for (int j = x-1; this.isPointValid(j, y); --j) {
+            ++acc;
+            if (this.getPointAmplitude(j, y) >= pointAmp) {
+                break;
+            }
+        }
+        return acc;
+    }
 }
 
 class GridBuilder {
@@ -137,5 +212,6 @@ class Solver {
 
         // System.Console.WriteLine(grid.ToString());
         System.Console.WriteLine("Part 1: " + grid.FindNumPointsVisible());
+        System.Console.WriteLine("Part 2: " + grid.FindHighestScenicScore());
     }
 }
