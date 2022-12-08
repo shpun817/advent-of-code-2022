@@ -10,3 +10,6 @@
 
 # Node modules
 node_modules
+
+# C# output files
+*.exe
