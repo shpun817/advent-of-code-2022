@@ -25,9 +25,11 @@ proc sign(n: int): int =
     else:
         result = 0
     
+proc deltaTowards(self, other: Vec2): Vec2 =
+    result = Vec2(x: sign(other.x - self.x), y: sign(other.y - self.y))
+    
 proc approach(self, other: Vec2): Vec2 =
-    let delta = Vec2(x: sign(other.x - self.x), y: sign(other.y - self.y))
-    result = self.add(delta)
+    result = self.add(self.deltaTowards(other))
 
 # Directions - origin at bottom-left
 proc UP(): Vec2 =
@@ -72,6 +74,25 @@ proc solveP1(motions: seq[Motion]): int =
                 
     result = visited.len()
 
+proc solveP2(motions: seq[Motion]): int =
+    var knots: array[0..9, Vec2] # Head: knots[0], Tail: knots[9]
+    var visited = toHashSet([knots[9].toString()])
+    
+    for motion in motions:
+        for _ in countup(1, motion.steps):
+            var currDirection = motion.direction
+            for i in countup(0, 8):
+                let j = i + 1
+                knots[i] = knots[i].add(currDirection)
+                if knots[j].isTouching(knots[i]):
+                    break
+                currDirection = knots[j].deltaTowards(knots[i])
+                if j == 9:
+                    knots[9] = knots[9].add(currDirection)
+                    visited.incl(knots[9].toString())
+                
+    result = visited.len()
+
 proc main(filename: string) =
     let inputFile = readFile(filename)
 
@@ -80,6 +101,8 @@ proc main(filename: string) =
             if line != "": parseMotion(line)
 
     echo fmt"Part 1: {solveP1(motions)}"
+    echo fmt"Part 2: {solveP2(motions)}"
 
-main("dummy_input.txt")
-# main("input.txt")
+# main("dummy_input.txt")
+# main("dummy_input_large.txt")
+main("input.txt")
