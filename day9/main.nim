@@ -8,9 +8,6 @@ type
   Vec2 = object
     x, y: int
 
-proc toString(self: Vec2): string =
-    result = fmt"({self.x}, {self.y})"
-
 proc add(self, other: Vec2): Vec2 =
     result = Vec2(x: self.x + other.x, y: self.y + other.y)
     
@@ -63,20 +60,20 @@ proc parseMotion(line: string): Motion =
             
 proc solveP1(motions: seq[Motion]): int =
     var head, tail = Vec2()
-    var visited = toHashSet([tail.toString()])
+    var visited = toHashSet([tail])
     
     for motion in motions:
         for _ in countup(1, motion.steps):
             head = head.add(motion.direction)
             if not tail.isTouching(head):
                 tail = tail.approach(head)
-                visited.incl(tail.toString())
+                visited.incl(tail)
                 
     result = visited.len()
 
 proc solveP2(motions: seq[Motion]): int =
     var knots: array[0..9, Vec2] # Head: knots[0], Tail: knots[9]
-    var visited = toHashSet([knots[9].toString()])
+    var visited = toHashSet([knots[9]])
     
     for motion in motions:
         for _ in countup(1, motion.steps):
@@ -89,7 +86,7 @@ proc solveP2(motions: seq[Motion]): int =
                 currDirection = knots[j].deltaTowards(knots[i])
                 if j == 9:
                     knots[9] = knots[9].add(currDirection)
-                    visited.incl(knots[9].toString())
+                    visited.incl(knots[9])
                 
     result = visited.len()
 
