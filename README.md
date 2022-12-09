@@ -12,7 +12,7 @@
 |  6  | JavaScript (NodeJS)       | Circular Buffer        | Very Easy  | Still not really a JS fan, also couldn't get an LSP to work in Neovim :(                                                                             |
 |  7  | Java                      | Recursion, Tree        | Hard       | You have to use a tree for this one, right? Right?                                                                                                   |
 |  8  | C#                        | 2D Array               | Medium     | I honestly hate that you can't declare immutable variables in C#                                                                                     |
-|  9  | Nim                       | Simple Linear Algebra  | Easy       | Nim's syntax is a bit cryptic, and its documentation could be a little better organized tbh...                                                       |
+|  9  | \*Nim                     | Simple Linear Algebra  | Easy       | Nim's syntax is a bit cryptic, and its documentation could be a little better organized tbh...                                                       |
 
 ## Languages to be used
 
