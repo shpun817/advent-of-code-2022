@@ -13,3 +13,7 @@ node_modules
 
 # C# output files
 *.exe
+
+# Zig output files
+zig-cache
+zig-out
