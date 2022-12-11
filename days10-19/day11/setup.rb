@@ -1,7 +1,7 @@
 require_relative 'monkey'
 
 def setUpDummy()
-    group = MonkeyGroup.new()
+    group = MonkeyGroup.new(96577) # mitigation is LCM of all bases in Test functions
     group.addMonkey(
         Monkey.new(
           [79, 98],
@@ -38,7 +38,7 @@ def setUpDummy()
 end
 
 def setUp()
-    group = MonkeyGroup.new()
+    group = MonkeyGroup.new(9699690) # mitigation is LCM of all bases in Test functions
     group.addMonkey(
         Monkey.new(
           [77, 69, 76, 77, 50, 58],

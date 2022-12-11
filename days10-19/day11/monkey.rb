@@ -17,7 +17,7 @@ class Monkey
         return !@items.isEmpty()
     end
     
-    def inspectNextItem(verbose = false)
+    def inspectNextItem(mitigation, part1 = true, verbose = false)
         @inspectCount += 1
 
         item = @items.dequeue()
@@ -28,7 +28,11 @@ class Monkey
         if verbose
             puts "\tWorry level is ... to %d." % [item]
         end
-        item = item / 3 # Phew, it's not damaged
+        if part1
+            item = item / 3 # Phew, it's not damaged
+        else
+            item = item % mitigation # Just so that the number doesn't get too large, does not affect the tests of divisibility
+        end
         if verbose
             puts "\tMonkey gets bored with item. Worry level is divided by 3 to %d." % [item]
         end
@@ -59,8 +63,9 @@ class InspectionResult
 end
 
 class MonkeyGroup
-    def initialize
+    def initialize(mitigation)
         @monkeys = []
+        @mitigation = mitigation
     end
     
     def numMonkeys
@@ -71,10 +76,10 @@ class MonkeyGroup
         @monkeys.push(monkey)
     end
     
-    def startRound(verbose = false)
+    def startRound(part1, verbose = false)
         for monkey in @monkeys do
             while monkey.hasItem do
-                result = monkey.inspectNextItem()
+                result = monkey.inspectNextItem(@mitigation, part1)
                 @monkeys[result.throwTarget].receiveItem(result.item)
             end
         end
@@ -92,7 +97,7 @@ class MonkeyGroup
         puts ""
     end
     
-    def solveP1
+    def getMonkeyBusiness
         inspectCounts = @monkeys.map { |m| m.inspectCount }
         inspectCounts = inspectCounts.sort().reverse()
         return inspectCounts[0] * inspectCounts[1]
