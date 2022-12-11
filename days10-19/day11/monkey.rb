@@ -29,9 +29,9 @@ class Monkey
             puts "\tWorry level is ... to %d." % [item]
         end
         item = item / 3 # Phew, it's not damaged
-        # if verbose
-        #     puts "\tMonkey gets bored with item. Worry level is divided by 3 to %d." % [item]
-        # end
+        if verbose
+            puts "\tMonkey gets bored with item. Worry level is divided by 3 to %d." % [item]
+        end
         throwTarget = @testFunc.call(item) ? @throwToTrue : @throwToFalse
         if verbose
             puts "\tItem with worry level %d is thrown to monkey %d." % [item, throwTarget]
