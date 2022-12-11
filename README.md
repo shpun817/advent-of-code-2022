@@ -16,7 +16,7 @@
 | 10  | \*Zig                     | Clock Cycle Simulation | Very Easy   | People who enjoy low-level programming would like Zig. Its community support and documentations are a bit lacking though                                     |
 | 11  | \*Ruby                    | Modular Arithmetic     | Easy/Medium | Shouldn't have slept through the discrete math class... Ruby is really clean; Definitely will explore more!                                                  |
 
-## Languages to be used
+## Language Candidates
 
 No. No `Brainfuck`.
 
@@ -27,3 +27,23 @@ No. No `Brainfuck`.
 -   Scala
 
 -   Haskell
+
+-   C
+
+-   Pascal
+
+-   Lisp
+
+-   R
+
+-   Lua
+
+-   Perl
+
+-   PHP
+
+-   Prolog
+
+-   Swift
+
+-   Elm
