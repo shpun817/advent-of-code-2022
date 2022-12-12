@@ -47,3 +47,5 @@ No. No `Brainfuck`.
 -   Swift
 
 -   Elm
+
+-   Shell Script
