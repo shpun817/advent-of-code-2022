@@ -14,7 +14,8 @@
 |  8  | C#                        | 2D Array               | Medium      | I honestly hate that you can't declare immutable variables in C#                                                                                             |
 |  9  | \*Nim                     | Simple Linear Algebra  | Easy        | Nim's syntax is a bit cryptic, and its documentation could be a little better organized tbh...                                                               |
 | 10  | \*Zig                     | Clock Cycle Simulation | Very Easy   | People who enjoy low-level programming would like Zig. Its community support and documentations are a bit lacking though                                     |
-| 11  | \*Ruby                    | Modular Arithmetic     | Easy/Medium | Shouldn't have slept through discrete math in uni... Ruby is really clean; Definitely will explore more!                                                  |
+| 11  | \*Ruby                    | Modular Arithmetic     | Easy/Medium | Shouldn't have slept through discrete math in uni... Ruby is really clean; Definitely will explore more!                                                     |
+| 12  | C                         | Graph, BFS             | Easy        | Implementing those structs and behaviors from scratch is really fun                                                                                          |
 
 ## Language Candidates
 
@@ -27,8 +28,6 @@ No. No `Brainfuck`.
 -   Scala
 
 -   Haskell
-
--   C
 
 -   Pascal
 

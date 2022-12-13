@@ -60,6 +60,16 @@ int countPath(Node* node) {
     return 1 + countPath(node->parent);
 }
 
+void resetNodes(Node** nodes) {
+    for (size_t i = 0; i < HEIGHT; ++i) {
+        for (size_t j = 0; j < WIDTH; ++j) {
+            Node* node = &nodes[i][j];
+            node->parent = NULL;
+            node->seen = false;
+        }
+    }
+}
+
 // ================================ Queue ================================
 
 typedef struct {
@@ -92,6 +102,14 @@ bool isEmpty(Queue* queue) {
 // ================================ BFS  ================================
 
 int findLengthOfShortestPath(Node** nodes, Node* source, Node* destination) {
+    if (source == NULL) {
+        perror("Source is NULL");
+        exit(EXIT_FAILURE);
+    }
+    if (destination == NULL) {
+        perror("Destination is NULL");
+        exit(EXIT_FAILURE);
+    }
     Queue* queue = malloc(sizeof(Queue));
     makeQueue(queue);
     enqueue(queue, source);
@@ -115,8 +133,7 @@ int findLengthOfShortestPath(Node** nodes, Node* source, Node* destination) {
     
     free(queue);
     
-    perror("Destination unreachable");
-    exit(EXIT_FAILURE);
+    return WIDTH * HEIGHT;
 }
 
 // ================================ Utils ================================
@@ -164,19 +181,19 @@ int main() {
     readFileIntoLines(lines, filename);
 
     // Initialize nodes
-    Node* source = NULL;
+    Queue* sources = malloc(sizeof(Queue));
     Node* destination = NULL;
     Node** nodes = malloc(sizeof(Node*) * HEIGHT);
     for (size_t i = 0; i < HEIGHT; ++i) {
         nodes[i] = malloc(sizeof(Node) * WIDTH);
         for (size_t j = 0; j < WIDTH; ++j) {
             char c = lines[i][j];
-            if (c == 'S') {
-                source = &nodes[i][j];
+            int elevation = charToElevation(c);
+            if (elevation == 0) {
+                enqueue(sources, &nodes[i][j]);
             } else if (c == 'E') {
                 destination = &nodes[i][j];
             }
-            int elevation = charToElevation(c);
             makeNode(&nodes[i][j], elevation);
         }
     }
@@ -192,7 +209,18 @@ int main() {
         }
     }
     
-    printf("Part 1: %d\n", findLengthOfShortestPath(nodes, source, destination));
+    int minLength = WIDTH * HEIGHT;
+    int i = 0;
+    while (!isEmpty(sources)) {
+        resetNodes(nodes);
+        Node* source = dequeue(sources);
+        int length = findLengthOfShortestPath(nodes, source, destination);
+        if (length < minLength) {
+            minLength = length;
+        }
+    }
+    
+    printf("Part 2: %d\n", minLength);
     
     // Clean up
     for (size_t i = 0; i < HEIGHT; ++i) {
