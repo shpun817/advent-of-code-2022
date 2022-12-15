@@ -16,6 +16,7 @@
 | 10  | \*Zig                     | Clock Cycle Simulation | Very Easy   | People who enjoy low-level programming would like Zig. Its community support and documentations are a bit lacking though                                     |
 | 11  | \*Ruby                    | Modular Arithmetic     | Easy/Medium | Shouldn't have slept through discrete math in uni... Ruby is really clean; Definitely will explore more!                                                     |
 | 12  | C                         | Graph, BFS             | Easy        | Implementing those structs and behaviors from scratch is really fun                                                                                          |
+| 13  | Haskell                   | Recursive Parsing      | Medium/Hard | Haskell is a lot of fun :D Rediscovering the joy of programming                                                                                              |
 
 ## Language Candidates
 
@@ -26,8 +27,6 @@ No. No `Brainfuck`.
 -   Groovy
 
 -   Scala
-
--   Haskell
 
 -   Pascal
 

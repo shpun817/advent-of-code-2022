@@ -1,3 +1,5 @@
+import Data.List (sortBy)
+
 filename :: String
 -- filename = "dummy_input.txt"
 filename = "input.txt"
@@ -106,6 +108,9 @@ isInRightOrderLL (left, right) = do
 
 -- End comparison logic
 
+sortOrder :: String -> String -> Ordering
+sortOrder a b = if isInRightOrder (a, b) then LT else GT
+
 main :: IO()
 main = do
     inputStr <- readFile filename
@@ -123,3 +128,19 @@ main = do
     let sumIndices = sum indPairsInRightOrder
     
     putStrLn $ "Part 1: " ++ show sumIndices
+    
+    let dividers = ["[[2]]", "[[6]]"]
+    
+    let packetsWithDividers = packets ++ dividers
+    
+    let sortedPackets = sortBy sortOrder packetsWithDividers
+    
+    let enumeratedSortedPackets = enumerate sortedPackets
+    
+    let dividerPackets = filter (\(_, packet) -> packet `elem` dividers) enumeratedSortedPackets
+    
+    let indDividerPackets = map fst dividerPackets
+    
+    let decoderKey = product indDividerPackets
+    
+    putStrLn $ "Part 2: " ++ show decoderKey
