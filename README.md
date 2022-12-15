@@ -17,6 +17,7 @@
 | 11  | \*Ruby                    | Modular Arithmetic     | Easy/Medium | Shouldn't have slept through discrete math in uni... Ruby is really clean; Definitely will explore more!                                                     |
 | 12  | C                         | Graph, BFS             | Easy        | Implementing those structs and behaviors from scratch is really fun                                                                                          |
 | 13  | \*Haskell                 | Recursive Parsing      | Medium/Hard | Haskell is a lot of fun :D Rediscovering the joy of programming                                                                                              |
+| 14  | \*Prolog                  | Recursive Simulation   | Easy        | Couldn't figure out how to store a persistent integer in Prolog, so ended up hardcoding it in ;(                                                             |
 
 ## Language Candidates
 
@@ -39,8 +40,6 @@ No. No `Brainfuck`.
 -   Perl
 
 -   PHP
-
--   Prolog
 
 -   Swift
 
