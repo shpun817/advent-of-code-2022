@@ -17,3 +17,7 @@ node_modules
 # Zig output files
 zig-cache
 zig-out
+
+# Haskell output files
+*.hi
+*.o
