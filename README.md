@@ -19,6 +19,7 @@
 | 13  | \*Haskell                 | Recursive Parsing          | Medium/Hard | Haskell is a lot of fun :D Rediscovering the joy of programming                                                                                              |
 | 14  | \*Prolog                  | Recursive Simulation       | Easy        | Couldn't figure out how to store a persistent integer in Prolog, so ended up hardcoding it in ;(                                                             |
 | 15  | \*Groovy                  | Discrete Geometry          | Hard        | First time we have to actually think about how to optimize the solution. Nice puzzle indeed!                                                                 |
+| 16  | R                         | DFS, Search Optimization   | Very Hard   | The solution is not immediately obvious. The search takes a while to run because I can't implement my optimization ideas properly in R :(                    |
 
 ## Language Candidates
 
@@ -31,8 +32,6 @@ No. No `Brainfuck`.
 -   Pascal
 
 -   Lisp
-
--   R
 
 -   Lua
 
