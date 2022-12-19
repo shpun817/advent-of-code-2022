@@ -17,6 +17,10 @@ class Vector {
     plus(other: Vector): Vector {
         return new Vector(this.x + other.x, this.y + other.y);
     }
+    
+    minus(other: Vector): Vector {
+        return new Vector(this.x - other.x, this.y - other.y);
+    }
 
     equals(other: Vector): boolean {
         return this.x === other.x && this.y === other.y;

@@ -2,6 +2,6 @@
 
 ```bash
 
-$ deno run --check main.ts
+$ deno run main.ts
 
 ```
