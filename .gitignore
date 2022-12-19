@@ -21,3 +21,6 @@ zig-out
 # Haskell output files
 *.hi
 *.o
+
+# Shell scripting temporary directory
+tmp

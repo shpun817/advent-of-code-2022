@@ -21,6 +21,7 @@
 | 15  | \*Groovy                  | Discrete Geometry                               | Hard           | First time we have to actually think about how to optimize the solution. Nice puzzle indeed!                                                                 |
 | 16  | R                         | DFS, Search Optimization                        | Very Hard      | The solution is not immediately obvious. The search takes a while to run because I can't implement my optimization ideas properly in R :(                    |
 | 17  | TypeScript                | Tetris, Linear Regression, (Modular Arithmetic) | Hard/Very Hard | Very interesting puzzle! I love the part where you reimplement Tetris :)                                                                                     |
+| 18  | Shell Script              | 3D Geometry                                     | Easy           | My queue is implemented as a file, so it takes a while to run... A lot of refactoring could be done but after I recover from headaches :(                    |
 
 ## Language Candidates
 
@@ -41,7 +42,5 @@ No. No `Brainfuck`.
 -   Swift
 
 -   Elm
-
--   Shell Script
 
 -   OCaml
